@@ -1,0 +1,18 @@
+//
+//  Pageable.swift
+//  Reddit
+//
+//  Created by Danil Kokarev on 29.07.2018.
+//  Copyright © 2018 Danil Kokarev. All rights reserved.
+//
+
+import Foundation
+
+protocol Pageable {
+    
+    var loading: Bool { get set }
+    var marker: String? { get set }
+    
+    func loadNextPage(after: String?)
+    
+}

@@ -14,6 +14,8 @@ struct Post: PostItem {
     var author: String
     var numberOfComments: Int
     var date: Date
+    var title: String
+    var preview: Preview?
     
 }
 
@@ -24,6 +26,8 @@ extension Post: Decodable {
         case author
         case numberOfComments = "num_comments"
         case date = "created"
+        case title
+        case preview
     }
     
     private enum DataKeys: String, CodingKey {
@@ -33,12 +37,14 @@ extension Post: Decodable {
     init(from decoder:Decoder) throws {
         let values = try decoder.container(keyedBy: DataKeys.self)
         let postValues = try values.nestedContainer(keyedBy: CodingKeys.self, forKey: .data)
+        
         id = try postValues.decode(String.self, forKey: .id)
         author = try postValues.decode(String.self, forKey: .author)
         numberOfComments = try postValues.decode(Int.self, forKey: .numberOfComments)
+        title = try postValues.decode(String.self, forKey: .title)
+        preview = try? postValues.decode(Preview.self, forKey: .preview)
         let timeInterval = try postValues.decode(TimeInterval.self, forKey: .date)
-        self.date = Date(timeIntervalSince1970: timeInterval)
-        
+        date = Date(timeIntervalSince1970: timeInterval)
     }
 
 }

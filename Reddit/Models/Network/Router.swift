@@ -10,7 +10,7 @@ import Foundation
 
 struct Router {
     
-    var baseUrl: URL = Config.baseURL
+    let baseUrl: URL = Config.baseURL
     
     func request(for target: TargetType) -> URLRequest? {
         let url = baseUrl.appendingPathComponent(target.path)

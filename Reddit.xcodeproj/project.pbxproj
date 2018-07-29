@@ -17,11 +17,18 @@
 		FCA773CF210D0998007DE903 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773CB210D0998007DE903 /* Router.swift */; };
 		FCA773D0210D0998007DE903 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773CC210D0998007DE903 /* ParameterEncoding.swift */; };
 		FCA773D2210D0A7C007DE903 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773D1210D0A7C007DE903 /* HTTPMethod.swift */; };
-		FCA773D6210D19BB007DE903 /* PostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773D5210D19BB007DE903 /* PostPage.swift */; };
+		FCA773D6210D19BB007DE903 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773D5210D19BB007DE903 /* Page.swift */; };
 		FCA773DE210D2051007DE903 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773DC210D2051007DE903 /* TargetType.swift */; };
 		FCA773DF210D2051007DE903 /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773DD210D2051007DE903 /* PostItem.swift */; };
 		FCA773E1210D2068007DE903 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773E0210D2068007DE903 /* Constants.swift */; };
 		FCA773E3210D279B007DE903 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773E2210D279B007DE903 /* PostService.swift */; };
+		FCA773E5210D3839007DE903 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773E4210D3839007DE903 /* PostCell.swift */; };
+		FCD68FB2210DFB920079480B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FB1210DFB920079480B /* StringExtension.swift */; };
+		FCD68FB4210E1E9B0079480B /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FB3210E1E9B0079480B /* PostImageCell.swift */; };
+		FCD68FB6210E2F1C0079480B /* Pageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FB5210E2F1C0079480B /* Pageable.swift */; };
+		FCD68FB8210E33500079480B /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FB7210E33500079480B /* Preview.swift */; };
+		FCD68FBA210E33850079480B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FB9210E33850079480B /* Image.swift */; };
+		FCD68FBC210E33A40079480B /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FBB210E33A40079480B /* Source.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,11 +43,18 @@
 		FCA773CB210D0998007DE903 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FCA773CC210D0998007DE903 /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
 		FCA773D1210D0A7C007DE903 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		FCA773D5210D19BB007DE903 /* PostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPage.swift; sourceTree = "<group>"; };
+		FCA773D5210D19BB007DE903 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		FCA773DC210D2051007DE903 /* TargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		FCA773DD210D2051007DE903 /* PostItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
 		FCA773E0210D2068007DE903 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FCA773E2210D279B007DE903 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		FCA773E4210D3839007DE903 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		FCD68FB1210DFB920079480B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		FCD68FB3210E1E9B0079480B /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
+		FCD68FB5210E2F1C0079480B /* Pageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pageable.swift; sourceTree = "<group>"; };
+		FCD68FB7210E33500079480B /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		FCD68FB9210E33850079480B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		FCD68FBB210E33A40079480B /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +100,11 @@
 		FCA773AF210CC81E007DE903 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FCA773D5210D19BB007DE903 /* Page.swift */,
 				FCA773B1210CC81F007DE903 /* Post.swift */,
-				FCA773D5210D19BB007DE903 /* PostPage.swift */,
+				FCD68FB7210E33500079480B /* Preview.swift */,
+				FCD68FB9210E33850079480B /* Image.swift */,
+				FCD68FBB210E33A40079480B /* Source.swift */,
 				FCA773C8210D0998007DE903 /* Network */,
 			);
 			path = Models;
@@ -127,6 +144,8 @@
 		FCA773D9210D1ECD007DE903 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FCA773E4210D3839007DE903 /* PostCell.swift */,
+				FCD68FB3210E1E9B0079480B /* PostImageCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA773E0210D2068007DE903 /* Constants.swift */,
+				FCD68FB1210DFB920079480B /* StringExtension.swift */,
 				FCA773DB210D2051007DE903 /* Protocols */,
 			);
 			path = Helpers;
@@ -144,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA773DD210D2051007DE903 /* PostItem.swift */,
+				FCD68FB5210E2F1C0079480B /* Pageable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -226,11 +247,18 @@
 				FCA773BA210CC81F007DE903 /* Post.swift in Sources */,
 				FCA773BD210CC81F007DE903 /* TopPostsViewController.swift in Sources */,
 				FCA77398210BC04A007DE903 /* AppDelegate.swift in Sources */,
-				FCA773D6210D19BB007DE903 /* PostPage.swift in Sources */,
+				FCA773D6210D19BB007DE903 /* Page.swift in Sources */,
 				FCA773D2210D0A7C007DE903 /* HTTPMethod.swift in Sources */,
 				FCA773E3210D279B007DE903 /* PostService.swift in Sources */,
+				FCD68FB6210E2F1C0079480B /* Pageable.swift in Sources */,
+				FCD68FB8210E33500079480B /* Preview.swift in Sources */,
+				FCD68FBA210E33850079480B /* Image.swift in Sources */,
 				FCA773D0210D0998007DE903 /* ParameterEncoding.swift in Sources */,
 				FCA773E1210D2068007DE903 /* Constants.swift in Sources */,
+				FCD68FBC210E33A40079480B /* Source.swift in Sources */,
+				FCD68FB2210DFB920079480B /* StringExtension.swift in Sources */,
+				FCA773E5210D3839007DE903 /* PostCell.swift in Sources */,
+				FCD68FB4210E1E9B0079480B /* PostImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,8 +402,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H5K2KK7A47;
+				DEVELOPMENT_TEAM = G36827U729;
 				INFOPLIST_FILE = "$(SRCROOT)/Reddit/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -383,6 +412,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.danilkokarev.Reddit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -392,8 +422,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H5K2KK7A47;
+				DEVELOPMENT_TEAM = G36827U729;
 				INFOPLIST_FILE = "$(SRCROOT)/Reddit/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -401,6 +432,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.danilkokarev.Reddit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

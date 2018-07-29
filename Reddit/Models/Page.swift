@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct PostPage {
+struct Page {
     
-    var after: String?
-    var posts: [PostItem]
+    private(set) var after: String?
+    private(set) var posts: [PostItem]
     
 }
 
-extension PostPage: Decodable {
+extension Page: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case after

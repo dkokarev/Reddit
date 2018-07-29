@@ -11,6 +11,7 @@ import Foundation
 protocol PostItem {
     
     var id: String { get }
+    var title: String { get }
     var author: String { get }
     var numberOfComments: Int { get }
     var date: Date { get }

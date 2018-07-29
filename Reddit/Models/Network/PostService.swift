@@ -10,7 +10,7 @@ import Foundation
 
 struct PostService {
     
-    typealias PostCompletion = (PostPage?, Error?) -> ()
+    typealias PostCompletion = (Page?, Error?) -> ()
     
     static func topPosts(limit: UInt = 10, after: String?, completion: @escaping PostCompletion) -> URLSessionTask? {
         let target = PostTarget.top(limit: limit, after: after)
@@ -18,15 +18,15 @@ struct PostService {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if error != nil || data == nil {
-                completion(nil, error)
+                DispatchQueue.main.async { completion(nil, error) }
                 return
             }
-            
+ 
             do {
-                let page = try JSONDecoder().decode(PostPage.self, from: data!)
-                completion(page, nil)
+                let page = try JSONDecoder().decode(Page.self, from: data!)
+                DispatchQueue.main.async { completion(page, nil) }
             } catch let error {
-                completion(nil, error)
+                DispatchQueue.main.async { completion(nil, error) }
             }
         }
         

@@ -10,8 +10,8 @@ import Foundation
 
 protocol Pageable {
     
-    var loading: Bool { get set }
-    var marker: String? { get set }
+    var loading: Bool { get }
+    var marker: String? { get }
     
     func loadNextPage(after: String?)
     

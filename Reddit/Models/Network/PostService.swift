@@ -12,7 +12,7 @@ struct PostService {
     
     typealias PostCompletion = (Page?, Error?) -> ()
     
-    static func topPosts(limit: UInt = 10, after: String?, completion: @escaping PostCompletion) -> URLSessionTask? {
+    static func topPosts(limit: UInt = 10, after: String?, completion: @escaping PostCompletion) -> URLSessionDataTask? {
         let target = PostTarget.top(limit: limit, after: after)
         guard let request = Router().request(for: target) else { return nil }
         

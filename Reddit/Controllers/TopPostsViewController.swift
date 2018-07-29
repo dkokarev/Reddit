@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopPostsViewController: UIViewController {
+class TopPostsViewController: UIViewController, Pageable {
     
     private let estimatedCellHeight: CGFloat = 130.0
     private let estimatedImageCellHeight: CGFloat = 330.0
@@ -20,6 +20,7 @@ class TopPostsViewController: UIViewController {
     private var posts = [PostItem]()
     private(set) var loading = false
     private(set) var marker: String?
+    private weak var task: URLSessionDataTask?
     
     // MARK: - View Lifecycle
 
@@ -31,11 +32,15 @@ class TopPostsViewController: UIViewController {
         loadNextPage(after: marker)
     }
     
+    deinit {
+        task?.cancel()
+    }
+    
     // MARK: - Pageable
     
     func loadNextPage(after: String?) {
         loading = true
-        _ = PostService.topPosts(after: after) { [weak self] page, error in
+        task = PostService.topPosts(after: after) { [weak self] page, error in
             guard let strongSelf = self else { return }
             
             strongSelf.loading = false
@@ -88,7 +93,9 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    // MARK: - UIScrollViewDelegate
+}
+
+extension TopPostsViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if loading == true || marker == nil {

@@ -11,7 +11,7 @@ import UIKit
 class TopPostsViewController: UIViewController, Pageable {
     
     private let estimatedCellHeight: CGFloat = 130.0
-    private let estimatedImageCellHeight: CGFloat = 330.0
+    private let estimatedImageCellHeight: CGFloat = 350.0
     private let distanceToLoadNextPage: CGFloat = 300.0
     private let cellId = "PostCell"
     private let imageCellId = "PostImageCell"
@@ -22,12 +22,13 @@ class TopPostsViewController: UIViewController, Pageable {
     private weak var task: URLSessionDataTask?
     
     private var posts = [PostItem]()
+    private var rowHeights = [IndexPath : CGFloat]()
     private lazy var imageProvider = ImageProvider()
-    private lazy var loadingView = LoadingView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: 44.0))
+    private lazy var loadingView = LoadingView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: 50.0))
     
     private(set) var loading = false {
-        didSet {
-            tableView.tableFooterView = loading == true ? loadingView : nil
+        willSet {
+            tableView.tableFooterView = newValue == true ? loadingView : nil
         }
     }
     
@@ -67,13 +68,22 @@ class TopPostsViewController: UIViewController, Pageable {
         task = PostService.topPosts(after: after) { [weak self] page, error in
             guard let strongSelf = self else { return }
             
-            strongSelf.loading = false
+            defer {
+                strongSelf.loading = false
+            }
             
-            guard page != nil else { return }
+            guard let page = page else { return }
             
-            strongSelf.marker = page!.after
-            strongSelf.posts.append(contentsOf: page!.posts)
-            strongSelf.tableView.reloadData()
+            let count = strongSelf.posts.count
+            
+            strongSelf.marker = page.after
+            strongSelf.posts.append(contentsOf: page.posts)
+            
+            var indexPaths = [IndexPath]()
+            for index in count...strongSelf.posts.count - 1 {
+                indexPaths.append(IndexPath(row: index, section: 0))
+            }
+            strongSelf.tableView.insertRows(at: indexPaths, with: .none)
         }
     }
 
@@ -108,6 +118,8 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        rowHeights[indexPath] = cell.frame.size.height
+        
         guard let post = posts[indexPath.row] as? Post,
               let url = post.preview?.defaultImage?.defaultThumbnailSource?.url else { return }
         
@@ -133,23 +145,25 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        let post = posts[indexPath.row] as! Post
-        
-        if post.preview == nil {
-            return estimatedCellHeight
-        } else {
-            return estimatedImageCellHeight
+        if let height = rowHeights[indexPath] {
+            return height
         }
+        
+        guard let post = posts[indexPath.row] as? Post,
+              post.preview?.defaultImage?.source != nil else { return estimatedImageCellHeight }
+
+        return estimatedCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = posts[indexPath.row] as! Post
-        
-        if post.preview?.defaultImage?.source != nil {
-            self.performSegue(withIdentifier: detailsSegue, sender: nil)
-        } else {
-            tableView.deselectRow(at: indexPath, animated: true)
+        guard let post = posts[indexPath.row] as? Post,
+              post.preview?.defaultImage?.source != nil
+            else {
+                tableView.deselectRow(at: indexPath, animated: true)
+                return
         }
+        
+        self.performSegue(withIdentifier: detailsSegue, sender: nil)
     }
     
 }

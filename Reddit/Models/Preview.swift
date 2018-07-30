@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Preview: Decodable {
+struct Preview: Codable {
     
     let images: [Image]
     let enabled: Bool

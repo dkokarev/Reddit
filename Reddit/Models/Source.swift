@@ -13,10 +13,14 @@ enum URLError: Error {
     case wrongFormat
 }
 
-struct Source: Decodable {
+struct Source {
     
     let url: URL
     let size: CGSize
+    
+}
+
+extension Source: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case url
@@ -38,6 +42,17 @@ struct Source: Decodable {
         
         self.url = url
         self.size = CGSize(width: width, height: height)
+    }
+    
+}
+
+extension Source: Encodable {
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(url.absoluteString, forKey: .url)
+        try container.encode(size.width, forKey: .width)
+        try container.encode(size.height, forKey: .height)
     }
     
 }

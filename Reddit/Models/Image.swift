@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Image: Decodable {
+struct Image: Codable {
     
     let id: String
     let source: Source

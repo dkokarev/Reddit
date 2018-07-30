@@ -48,3 +48,18 @@ extension Post: Decodable {
     }
 
 }
+
+extension Post: Encodable {
+    
+    func encode(to encoder: Encoder) throws {
+        var dataContainer = encoder.container(keyedBy: DataKeys.self)
+        var container = dataContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .data)
+        try container.encode(id, forKey: .id)
+        try container.encode(author, forKey: .author)
+        try container.encode(numberOfComments, forKey: .numberOfComments)
+        try container.encode(title, forKey: .title)
+        try container.encode(preview, forKey: .preview)
+        try container.encode(date.timeIntervalSince1970, forKey: .date)
+    }
+    
+}

@@ -15,6 +15,7 @@ class TopPostsViewController: UIViewController, Pageable {
     private let distanceToLoadNextPage: CGFloat = 300.0
     private let cellId = "PostCell"
     private let imageCellId = "PostImageCell"
+    private let detailsSegue = "PostDetailsSegue"
     
     @IBOutlet private var tableView: UITableView!
     private var posts = [PostItem]()
@@ -27,20 +28,35 @@ class TopPostsViewController: UIViewController, Pageable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Reddit"
-        
+                
         loadNextPage(after: marker)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     deinit {
         task?.cancel()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == detailsSegue, let indexPath = tableView.indexPathForSelectedRow, let post = posts[indexPath.row] as? Post {
+            if let controller = segue.destination as? PostDetailsViewController {
+                controller.post = post
+            }
+        }
+    }
+    
     // MARK: - Pageable
     
     func loadNextPage(after: String?) {
         loading = true
+        
         task = PostService.topPosts(after: after) { [weak self] page, error in
             guard let strongSelf = self else { return }
             
@@ -72,7 +88,7 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
         let post = posts[indexPath.row] as! Post
         let cell: PostCell
         
-        if  post.preview?.defaultImage?.defaultThumbnailSource?.url != nil {
+        if post.preview?.defaultImage?.defaultThumbnailSource?.url != nil {
             cell = tableView.dequeueReusableCell(withIdentifier: imageCellId) as! PostImageCell
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! PostCell
@@ -91,12 +107,12 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
             imageProvider.image(withURL: url) { [weak self] (imageUrl, image) in
                 guard let strongSelf = self,
                       let imageCell = cell as? PostImageCell ,
-                      let indexPath = strongSelf.tableView.indexPath(for: cell) else { return }
+                      let indexPath = strongSelf.tableView.indexPath(for: cell),
+                      let post = strongSelf.posts[indexPath.row] as? Post,
+                      let url = post.preview?.defaultImage?.defaultThumbnailSource?.url,
+                      url == imageUrl else { return }
                 
-                    let post = strongSelf.posts[indexPath.row] as! Post
-                    if let url = post.preview?.defaultImage?.defaultThumbnailSource?.url, url == imageUrl {
-                        imageCell.previewImageView.image = image
-                    }
+                imageCell.previewImageView.image = image
             }
         }
     }
@@ -116,6 +132,16 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
             return estimatedCellHeight
         } else {
             return estimatedImageCellHeight
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row] as! Post
+        
+        if post.preview?.defaultImage?.source != nil {
+            self.performSegue(withIdentifier: detailsSegue, sender: nil)
+        } else {
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     

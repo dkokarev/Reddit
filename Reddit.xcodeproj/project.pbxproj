@@ -33,6 +33,8 @@
 		FCD68FC1210E83590079480B /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC0210E83590079480B /* ImageStore.swift */; };
 		FCD68FC3210E838B0079480B /* ImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC2210E838B0079480B /* ImageOperation.swift */; };
 		FCD68FC5210E880D0079480B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC4210E880D0079480B /* DateExtension.swift */; };
+		FCD68FC7210E997C0079480B /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC6210E997C0079480B /* PostDetailsViewController.swift */; };
+		FCD68FC9210F1CC00079480B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		FCD68FC0210E83590079480B /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		FCD68FC2210E838B0079480B /* ImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperation.swift; sourceTree = "<group>"; };
 		FCD68FC4210E880D0079480B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		FCD68FC6210E997C0079480B /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
+		FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA773B6210CC81F007DE903 /* TopPostsViewController.swift */,
+				FCD68FC6210E997C0079480B /* PostDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				FCA773E0210D2068007DE903 /* Constants.swift */,
 				FCD68FB1210DFB920079480B /* StringExtension.swift */,
 				FCD68FC4210E880D0079480B /* DateExtension.swift */,
+				FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */,
 				FCA773DB210D2051007DE903 /* Protocols */,
 			);
 			path = Helpers;
@@ -262,6 +268,7 @@
 				FCA773BD210CC81F007DE903 /* TopPostsViewController.swift in Sources */,
 				FCA77398210BC04A007DE903 /* AppDelegate.swift in Sources */,
 				FCA773D6210D19BB007DE903 /* Page.swift in Sources */,
+				FCD68FC7210E997C0079480B /* PostDetailsViewController.swift in Sources */,
 				FCA773D2210D0A7C007DE903 /* HTTPMethod.swift in Sources */,
 				FCA773E3210D279B007DE903 /* PostService.swift in Sources */,
 				FCD68FB6210E2F1C0079480B /* Pageable.swift in Sources */,
@@ -272,6 +279,7 @@
 				FCD68FBC210E33A40079480B /* Source.swift in Sources */,
 				FCD68FC5210E880D0079480B /* DateExtension.swift in Sources */,
 				FCD68FB2210DFB920079480B /* StringExtension.swift in Sources */,
+				FCD68FC9210F1CC00079480B /* ViewControllerExtension.swift in Sources */,
 				FCA773E5210D3839007DE903 /* PostCell.swift in Sources */,
 				FCD68FBF210E4E740079480B /* ImageProvider.swift in Sources */,
 				FCD68FB4210E1E9B0079480B /* PostImageCell.swift in Sources */,

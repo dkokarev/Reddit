@@ -15,6 +15,7 @@ class ImageProvider: NSObject {
     
     private lazy var operationQueue: OperationQueue = {
         let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 5
         queue.qualityOfService = .userInitiated
         return queue
     }()
@@ -34,6 +35,11 @@ class ImageProvider: NSObject {
                     completion(strongOperation.url, strongOperation.image)
                 }
             }
+            
+            if operationQueue.operations.count >= operationQueue.maxConcurrentOperationCount {
+                operationQueue.operations.first?.cancel()
+            }
+            
             operationQueue.addOperation(operation)
         }
     }

@@ -24,6 +24,7 @@ class ImageOperation: Operation {
     
     let url: URL
     private(set) var image: UIImage?
+    private weak var task: URLSessionDataTask?
     
     private(set) var state = State.ready {
         willSet {
@@ -54,18 +55,27 @@ class ImageOperation: Operation {
         
         image = ImageStorage().image(withURL: url)
         
-        guard image == nil, let data = try? Data(contentsOf: url) else {
+        if image != nil {
             state = .finished
             return
         }
         
-        image = UIImage(data: data)
-        
-        if image != nil {
-            ImageStorage().saveImage(image!, withURL: url)
+        task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let strongSelf = self else { return }
+            
+            if let data = data, let image = UIImage(data: data) {
+                ImageStorage().saveImage(image, withURL: strongSelf.url)
+                strongSelf.image = image
+            }
+            
+            strongSelf.state = .finished
         }
-        
-        state = .finished
+        task?.resume()
     }
     
+    override func cancel() {
+        super.cancel()
+        
+        task?.cancel()
+    }
 }

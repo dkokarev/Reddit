@@ -10,68 +10,47 @@ import Foundation
 
 extension Date {
     
+    private struct Item {
+        let multi: String
+        let last: String
+        let value: Int?
+    }
+    
+    private var components: DateComponents {
+        return Calendar.current.dateComponents(
+               [.second, .minute, .hour, .day, .weekOfYear, .month, .year],
+               from: self,
+               to: Date())
+    }
+    
+    private var items: [Item] {
+        let dateComponents = components
+        return [
+            Item(multi: "years ago", last: "Last year", value: dateComponents.year),
+            Item(multi: "months ago", last: "Last month", value: dateComponents.month),
+            Item(multi: "weeks ago", last: "Last week", value: dateComponents.weekday),
+            Item(multi: "days ago", last: "Yesterday", value: dateComponents.day),
+            Item(multi: "hours ago", last: "An hour ago", value: dateComponents.hour),
+            Item(multi: "minutes ago", last: "A minute ago", value: dateComponents.minute),
+            Item(multi: "seconds ago", last: "Just now", value: dateComponents.second)
+        ]
+    }
+    
+    // MARK: - Public Methods
+    
     public func timeAgoSinceNow() -> String {
-        
-        let calendar = Calendar.current
-        let now = Date()
-        let unitFlags: NSCalendar.Unit = [.second, .minute, .hour, .day, .weekOfYear, .month, .year]
-        let components = (calendar as NSCalendar).components(unitFlags, from: self, to: now, options: [])
-        
-        print(self)
-        print(now)
-        
-        if let year = components.year, year >= 2 {
-            return "\(year) years ago"
+        for item in items {
+            switch item.value {
+            case let .some(step) where step == 0:
+                continue
+            case let .some(step) where step == 1:
+                return item.last
+            case let .some(step):
+                return String(step) + " " + item.multi
+            default:
+                continue
+            }
         }
-        
-        if let year = components.year, year >= 1 {
-            return "Last year"
-        }
-        
-        if let month = components.month, month >= 2 {
-            return "\(month) months ago"
-        }
-        
-        if let month = components.month, month >= 1 {
-            return "Last month"
-        }
-        
-        if let week = components.weekOfYear, week >= 2 {
-            return "\(week) weeks ago"
-        }
-        
-        if let week = components.weekOfYear, week >= 1 {
-            return "Last week"
-        }
-        
-        if let day = components.day, day >= 2 {
-            return "\(day) days ago"
-        }
-        
-        if let day = components.day, day >= 1 {
-            return "Yesterday"
-        }
-        
-        if let hour = components.hour, hour >= 2 {
-            return "\(hour) hours ago"
-        }
-        
-        if let hour = components.hour, hour >= 1 {
-            return "An hour ago"
-        }
-        
-        if let minute = components.minute, minute >= 2 {
-            return "\(minute) minutes ago"
-        }
-        
-        if let minute = components.minute, minute >= 1 {
-            return "A minute ago"
-        }
-        
-        if let second = components.second, second >= 3 {
-            return "\(second) seconds ago"
-        }
-        
         return "Just now"
     }
     

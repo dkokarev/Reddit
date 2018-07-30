@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        restoreState()
+        
         return true
     }
 
@@ -40,7 +42,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func restoreState() {
+        guard let navController = self.window?.rootViewController as? UINavigationController,
+              let selectedPost = PostStorage().selectedPost,
+              let postController = navController.storyboard?.instantiateViewController(withIdentifier: "PostDetailsViewController") as? PostDetailsViewController
+            else { return }
+        
+        postController.post = selectedPost
+        navController.pushViewController(postController, animated: true)
+    }
 
 }
 

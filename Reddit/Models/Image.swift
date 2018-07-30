@@ -14,7 +14,8 @@ struct Image: Codable {
     let source: Source
     let resolutions: [Source]
     var defaultThumbnailSource: Source? {
-        return resolutions.last
+        let count = resolutions.count
+        return count > 0 ? resolutions[count / 2] : nil
     }
     
 }

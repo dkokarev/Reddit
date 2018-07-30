@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
-struct ImageStore {
+struct ImageStorage {
     
     // MARK: Public Methods
     
     func image(withURL url: URL) -> UIImage? {
         guard let path = path(withURL: url) else { return nil }
+        
         return UIImage(contentsOfFile: path.path)
     }
     
@@ -26,8 +27,9 @@ struct ImageStore {
     }
     
     func path(withURL url: URL) -> URL? {
-        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
-        return directory.appendingPathComponent(url.lastPathComponent)
+        guard let directory = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
+        
+        return directory.appendingPathComponent(String(url.hashValue))
     }
     
 }

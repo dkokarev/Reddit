@@ -36,7 +36,7 @@ class TopPostsViewController: UIViewController, Pageable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         loadNextPage(after: marker)
     }
     
@@ -55,10 +55,10 @@ class TopPostsViewController: UIViewController, Pageable {
     // MARK: - Private Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard  segue.identifier == detailsSegue,
-               let indexPath = tableView.indexPathForSelectedRow,
-               let post = posts[indexPath.row] as? Post,
-               let controller = segue.destination as? PostDetailsViewController else { return }
+        guard segue.identifier == detailsSegue,
+              let indexPath = tableView.indexPathForSelectedRow,
+              let post = posts[indexPath.row] as? Post,
+              let controller = segue.destination as? PostDetailsViewController else { return }
         
         controller.post = post
     }
@@ -80,12 +80,7 @@ class TopPostsViewController: UIViewController, Pageable {
             let previousCount = strongSelf.posts.count
             strongSelf.marker = page.after
             strongSelf.posts.append(contentsOf: page.posts)
-            
-            var indexPaths = [IndexPath]()
-            for index in previousCount...strongSelf.posts.count - 1 {
-                indexPaths.append(IndexPath(row: index, section: 0))
-            }
-            strongSelf.tableView.insertRows(at: indexPaths, with: .none)
+            strongSelf.tableView.insertRows(from: previousCount, to: strongSelf.posts.count - 1, section: 0, with: .none)
         }
     }
 

@@ -52,7 +52,7 @@ class ImageOperation: Operation {
         
         state = .executing
         
-        image = ImageStore().image(withURL: url)
+        image = ImageStorage().image(withURL: url)
         
         guard image == nil, let data = try? Data(contentsOf: url) else {
             state = .finished
@@ -62,7 +62,7 @@ class ImageOperation: Operation {
         image = UIImage(data: data)
         
         if image != nil {
-            ImageStore().saveImage(image!, withURL: url)
+            ImageStorage().saveImage(image!, withURL: url)
         }
         
         state = .finished

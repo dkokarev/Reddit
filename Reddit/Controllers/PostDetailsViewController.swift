@@ -12,8 +12,15 @@ import UIKit
 class PostDetailsViewController: UIViewController {
     
     @IBOutlet private(set) var imageView: UIImageView!
+    @IBOutlet private(set) var spinner: UIActivityIndicatorView!
     private let imageProvider = ImageProvider()
-    var post: Post?
+    var post: Post? {
+        didSet {
+            if UIApplication.shared.applicationState == .active {
+                PostStorage().save(post: post)
+            }
+        }
+    }
     
     // MARK: - View Lifecycle
     
@@ -21,6 +28,12 @@ class PostDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         loadImage(fromPost: post)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        post = nil
     }
     
     // MARK: - IB Actions
@@ -36,9 +49,11 @@ class PostDetailsViewController: UIViewController {
     private func loadImage(fromPost post: Post?) {
         guard let url = post?.preview?.defaultImage?.source.url else { return }
         
+        spinner.startAnimating()
         imageProvider.image(withURL: url) { [weak self] (imageUrl, image) in
             guard let strongSelf = self else { return }
             
+            strongSelf.spinner.stopAnimating()
             strongSelf.imageView.image = image
         }
     }

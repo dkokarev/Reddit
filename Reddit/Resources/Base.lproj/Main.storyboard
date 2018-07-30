@@ -98,7 +98,7 @@
                                             <outlet property="titleLabel" destination="ABQ-P4-1B9" id="Ua1-YD-WFx"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="107" id="Adp-WX-pTl" customClass="PostCell" customModule="Reddit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="107" id="Adp-WX-pTl" customClass="PostCell" customModule="Reddit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="364" width="375" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Adp-WX-pTl" id="AC9-0T-b9G">
@@ -172,7 +172,7 @@
         <!--Details-->
         <scene sceneID="888-7g-xat">
             <objects>
-                <viewController id="dD6-35-mu6" customClass="PostDetailsViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostDetailsViewController" id="dD6-35-mu6" customClass="PostDetailsViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wgc-3R-aEQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,10 +180,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tki-Gv-3Sk">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="o8U-He-KWv">
+                                <rect key="frame" x="177" y="355" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tki-Gv-3Sk" firstAttribute="bottom" secondItem="40K-XA-7lM" secondAttribute="bottom" id="2Qy-hX-8yH"/>
+                            <constraint firstItem="o8U-He-KWv" firstAttribute="centerX" secondItem="40K-XA-7lM" secondAttribute="centerX" id="Doy-q5-Ze3"/>
+                            <constraint firstItem="o8U-He-KWv" firstAttribute="centerY" secondItem="40K-XA-7lM" secondAttribute="centerY" id="UCN-fS-JAM"/>
                             <constraint firstItem="tki-Gv-3Sk" firstAttribute="top" secondItem="40K-XA-7lM" secondAttribute="top" id="Xtg-KC-4BW"/>
                             <constraint firstItem="tki-Gv-3Sk" firstAttribute="leading" secondItem="40K-XA-7lM" secondAttribute="leading" id="e8L-hb-Rqq"/>
                             <constraint firstItem="tki-Gv-3Sk" firstAttribute="trailing" secondItem="40K-XA-7lM" secondAttribute="trailing" id="nAc-gy-1uo"/>
@@ -199,6 +204,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="tki-Gv-3Sk" id="VrE-Ga-TG7"/>
+                        <outlet property="spinner" destination="o8U-He-KWv" id="zW4-gY-5fd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="le3-0G-0eJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

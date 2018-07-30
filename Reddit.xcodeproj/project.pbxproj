@@ -12,7 +12,6 @@
 		FCA773A2210BC04C007DE903 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA773A0210BC04C007DE903 /* LaunchScreen.storyboard */; };
 		FCA773BA210CC81F007DE903 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773B1210CC81F007DE903 /* Post.swift */; };
 		FCA773BB210CC81F007DE903 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA773B3210CC81F007DE903 /* Assets.xcassets */; };
-		FCA773BC210CC81F007DE903 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCA773B4210CC81F007DE903 /* Info.plist */; };
 		FCA773BD210CC81F007DE903 /* TopPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773B6210CC81F007DE903 /* TopPostsViewController.swift */; };
 		FCA773CF210D0998007DE903 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773CB210D0998007DE903 /* Router.swift */; };
 		FCA773D0210D0998007DE903 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA773CC210D0998007DE903 /* ParameterEncoding.swift */; };
@@ -30,12 +29,14 @@
 		FCD68FBA210E33850079480B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FB9210E33850079480B /* Image.swift */; };
 		FCD68FBC210E33A40079480B /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FBB210E33A40079480B /* Source.swift */; };
 		FCD68FBF210E4E740079480B /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FBE210E4E740079480B /* ImageProvider.swift */; };
-		FCD68FC1210E83590079480B /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC0210E83590079480B /* ImageStore.swift */; };
+		FCD68FC1210E83590079480B /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC0210E83590079480B /* ImageStorage.swift */; };
 		FCD68FC3210E838B0079480B /* ImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC2210E838B0079480B /* ImageOperation.swift */; };
 		FCD68FC5210E880D0079480B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC4210E880D0079480B /* DateExtension.swift */; };
 		FCD68FC7210E997C0079480B /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC6210E997C0079480B /* PostDetailsViewController.swift */; };
 		FCD68FC9210F1CC00079480B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */; };
 		FCD68FCB210F28920079480B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FCA210F28920079480B /* LoadingView.swift */; };
+		FCD68FCD210F79E40079480B /* PostStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FCC210F79E40079480B /* PostStorage.swift */; };
+		FCEE1CB1210FC9EB00B4CB98 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE1CB0210FC9EB00B4CB98 /* TableViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,12 +64,14 @@
 		FCD68FB9210E33850079480B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FCD68FBB210E33A40079480B /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		FCD68FBE210E4E740079480B /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
-		FCD68FC0210E83590079480B /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		FCD68FC0210E83590079480B /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		FCD68FC2210E838B0079480B /* ImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperation.swift; sourceTree = "<group>"; };
 		FCD68FC4210E880D0079480B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		FCD68FC6210E997C0079480B /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		FCD68FCA210F28920079480B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		FCD68FCC210F79E40079480B /* PostStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStorage.swift; sourceTree = "<group>"; };
+		FCEE1CB0210FC9EB00B4CB98 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +122,9 @@
 				FCD68FB7210E33500079480B /* Preview.swift */,
 				FCD68FB9210E33850079480B /* Image.swift */,
 				FCD68FBB210E33A40079480B /* Source.swift */,
+				FCD68FCC210F79E40079480B /* PostStorage.swift */,
 				FCD68FBE210E4E740079480B /* ImageProvider.swift */,
-				FCD68FC0210E83590079480B /* ImageStore.swift */,
+				FCD68FC0210E83590079480B /* ImageStorage.swift */,
 				FCD68FC2210E838B0079480B /* ImageOperation.swift */,
 				FCA773C8210D0998007DE903 /* Network */,
 			);
@@ -176,6 +180,7 @@
 				FCD68FB1210DFB920079480B /* StringExtension.swift */,
 				FCD68FC4210E880D0079480B /* DateExtension.swift */,
 				FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */,
+				FCEE1CB0210FC9EB00B4CB98 /* TableViewExtension.swift */,
 				FCA773DB210D2051007DE903 /* Protocols */,
 			);
 			path = Helpers;
@@ -248,7 +253,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA773BC210CC81F007DE903 /* Info.plist in Resources */,
 				FCA773A2210BC04C007DE903 /* LaunchScreen.storyboard in Resources */,
 				FCA773BB210CC81F007DE903 /* Assets.xcassets in Resources */,
 				FCA7739D210BC04A007DE903 /* Main.storyboard in Resources */,
@@ -266,10 +270,12 @@
 				FCD68FC3210E838B0079480B /* ImageOperation.swift in Sources */,
 				FCA773DE210D2051007DE903 /* TargetType.swift in Sources */,
 				FCA773CF210D0998007DE903 /* Router.swift in Sources */,
-				FCD68FC1210E83590079480B /* ImageStore.swift in Sources */,
+				FCD68FC1210E83590079480B /* ImageStorage.swift in Sources */,
+				FCD68FCD210F79E40079480B /* PostStorage.swift in Sources */,
 				FCA773BA210CC81F007DE903 /* Post.swift in Sources */,
 				FCA773BD210CC81F007DE903 /* TopPostsViewController.swift in Sources */,
 				FCA77398210BC04A007DE903 /* AppDelegate.swift in Sources */,
+				FCEE1CB1210FC9EB00B4CB98 /* TableViewExtension.swift in Sources */,
 				FCA773D6210D19BB007DE903 /* Page.swift in Sources */,
 				FCD68FC7210E997C0079480B /* PostDetailsViewController.swift in Sources */,
 				FCA773D2210D0A7C007DE903 /* HTTPMethod.swift in Sources */,
@@ -434,6 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G36827U729;
 				INFOPLIST_FILE = "$(SRCROOT)/Reddit/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,6 +461,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G36827U729;
 				INFOPLIST_FILE = "$(SRCROOT)/Reddit/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

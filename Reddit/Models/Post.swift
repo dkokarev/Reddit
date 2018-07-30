@@ -25,7 +25,7 @@ extension Post: Decodable {
         case id
         case author
         case numberOfComments = "num_comments"
-        case date = "created"
+        case date = "created_utc"
         case title
         case preview
     }

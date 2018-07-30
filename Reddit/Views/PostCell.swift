@@ -15,9 +15,17 @@ class PostCell: UITableViewCell {
     @IBOutlet private(set) var authorLabel: UILabel!
     @IBOutlet private(set) var numberOfCommentsLabel: UILabel!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        titleLabel.text = nil
+        authorLabel.text = nil
+        numberOfCommentsLabel.text = nil
+    }
+    
     func update(with post: Post) {
         titleLabel.text = post.title
-        authorLabel.text = "Posted by " + post.author
+        authorLabel.text = "Posted by \(post.author) \(post.date.timeAgoSinceNow())"
         numberOfCommentsLabel.text = String(post.numberOfComments) + " Comments"
     }
     

@@ -21,6 +21,7 @@ class TopPostsViewController: UIViewController, Pageable {
     private(set) var loading = false
     private(set) var marker: String?
     private weak var task: URLSessionDataTask?
+    private let imageProvider = ImageProvider()
     
     // MARK: - View Lifecycle
 
@@ -71,10 +72,10 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
         let post = posts[indexPath.row] as! Post
         let cell: PostCell
         
-        if post.preview == nil {
-            cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! PostCell
-        } else {
+        if  post.preview?.defaultImage?.defaultThumbnailSource?.url != nil {
             cell = tableView.dequeueReusableCell(withIdentifier: imageCellId) as! PostImageCell
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! PostCell
         }
         
         cell.update(with: post)
@@ -82,6 +83,31 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row] as! Post
+        
+        if let url = post.preview?.defaultImage?.defaultThumbnailSource?.url {
+            imageProvider.image(withURL: url) { [weak self] (imageUrl, image) in
+                guard let strongSelf = self,
+                      let imageCell = cell as? PostImageCell ,
+                      let indexPath = strongSelf.tableView.indexPath(for: cell) else { return }
+                
+                    let post = strongSelf.posts[indexPath.row] as! Post
+                    if let url = post.preview?.defaultImage?.defaultThumbnailSource?.url, url == imageUrl {
+                        imageCell.previewImageView.image = image
+                    }
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row] as! Post
+        
+        if let url = post.preview?.defaultImage?.defaultThumbnailSource?.url {
+            imageProvider.setPriority(.low, for: url)
+        }
+    }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let post = posts[indexPath.row] as! Post

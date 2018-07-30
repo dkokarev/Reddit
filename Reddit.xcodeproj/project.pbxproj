@@ -29,6 +29,10 @@
 		FCD68FB8210E33500079480B /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FB7210E33500079480B /* Preview.swift */; };
 		FCD68FBA210E33850079480B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FB9210E33850079480B /* Image.swift */; };
 		FCD68FBC210E33A40079480B /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FBB210E33A40079480B /* Source.swift */; };
+		FCD68FBF210E4E740079480B /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FBE210E4E740079480B /* ImageProvider.swift */; };
+		FCD68FC1210E83590079480B /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC0210E83590079480B /* ImageStore.swift */; };
+		FCD68FC3210E838B0079480B /* ImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC2210E838B0079480B /* ImageOperation.swift */; };
+		FCD68FC5210E880D0079480B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC4210E880D0079480B /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		FCD68FB7210E33500079480B /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		FCD68FB9210E33850079480B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FCD68FBB210E33A40079480B /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		FCD68FBE210E4E740079480B /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		FCD68FC0210E83590079480B /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		FCD68FC2210E838B0079480B /* ImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperation.swift; sourceTree = "<group>"; };
+		FCD68FC4210E880D0079480B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,9 @@
 				FCD68FB7210E33500079480B /* Preview.swift */,
 				FCD68FB9210E33850079480B /* Image.swift */,
 				FCD68FBB210E33A40079480B /* Source.swift */,
+				FCD68FBE210E4E740079480B /* ImageProvider.swift */,
+				FCD68FC0210E83590079480B /* ImageStore.swift */,
+				FCD68FC2210E838B0079480B /* ImageOperation.swift */,
 				FCA773C8210D0998007DE903 /* Network */,
 			);
 			path = Models;
@@ -155,6 +166,7 @@
 			children = (
 				FCA773E0210D2068007DE903 /* Constants.swift */,
 				FCD68FB1210DFB920079480B /* StringExtension.swift */,
+				FCD68FC4210E880D0079480B /* DateExtension.swift */,
 				FCA773DB210D2051007DE903 /* Protocols */,
 			);
 			path = Helpers;
@@ -242,8 +254,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA773DF210D2051007DE903 /* PostItem.swift in Sources */,
+				FCD68FC3210E838B0079480B /* ImageOperation.swift in Sources */,
 				FCA773DE210D2051007DE903 /* TargetType.swift in Sources */,
 				FCA773CF210D0998007DE903 /* Router.swift in Sources */,
+				FCD68FC1210E83590079480B /* ImageStore.swift in Sources */,
 				FCA773BA210CC81F007DE903 /* Post.swift in Sources */,
 				FCA773BD210CC81F007DE903 /* TopPostsViewController.swift in Sources */,
 				FCA77398210BC04A007DE903 /* AppDelegate.swift in Sources */,
@@ -256,8 +270,10 @@
 				FCA773D0210D0998007DE903 /* ParameterEncoding.swift in Sources */,
 				FCA773E1210D2068007DE903 /* Constants.swift in Sources */,
 				FCD68FBC210E33A40079480B /* Source.swift in Sources */,
+				FCD68FC5210E880D0079480B /* DateExtension.swift in Sources */,
 				FCD68FB2210DFB920079480B /* StringExtension.swift in Sources */,
 				FCA773E5210D3839007DE903 /* PostCell.swift in Sources */,
+				FCD68FBF210E4E740079480B /* ImageProvider.swift in Sources */,
 				FCD68FB4210E1E9B0079480B /* PostImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

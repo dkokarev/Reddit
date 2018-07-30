@@ -20,6 +20,12 @@ class PostImageCell: PostCell {
         previewImageView.layer.cornerRadius = 10.0
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        previewImageView.image = nil
+    }
+    
     override func update(with post: Post) {
         super.update(with: post)
         

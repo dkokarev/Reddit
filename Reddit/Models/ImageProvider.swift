@@ -13,7 +13,7 @@ typealias ImageCompletion = (URL, UIImage?) -> ()
 
 class ImageProvider: NSObject {
     
-    private lazy var operationQueue: OperationQueue = { [weak self] in
+    private lazy var operationQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.qualityOfService = .userInitiated
         return queue

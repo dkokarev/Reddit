@@ -35,6 +35,7 @@
 		FCD68FC5210E880D0079480B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC4210E880D0079480B /* DateExtension.swift */; };
 		FCD68FC7210E997C0079480B /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC6210E997C0079480B /* PostDetailsViewController.swift */; };
 		FCD68FC9210F1CC00079480B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */; };
+		FCD68FCB210F28920079480B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FCA210F28920079480B /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		FCD68FC4210E880D0079480B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		FCD68FC6210E997C0079480B /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		FCD68FCA210F28920079480B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			children = (
 				FCA773E4210D3839007DE903 /* PostCell.swift */,
 				FCD68FB3210E1E9B0079480B /* PostImageCell.swift */,
+				FCD68FCA210F28920079480B /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				FCA773D0210D0998007DE903 /* ParameterEncoding.swift in Sources */,
 				FCA773E1210D2068007DE903 /* Constants.swift in Sources */,
 				FCD68FBC210E33A40079480B /* Source.swift in Sources */,
+				FCD68FCB210F28920079480B /* LoadingView.swift in Sources */,
 				FCD68FC5210E880D0079480B /* DateExtension.swift in Sources */,
 				FCD68FB2210DFB920079480B /* StringExtension.swift in Sources */,
 				FCD68FC9210F1CC00079480B /* ViewControllerExtension.swift in Sources */,

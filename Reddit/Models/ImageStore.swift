@@ -20,7 +20,7 @@ struct ImageStore {
     
     func saveImage(_ image: UIImage, withURL url: URL) {
         guard let path = path(withURL: url),
-            let data = UIImageJPEGRepresentation(image, 1) else { return }
+              let data = UIImageJPEGRepresentation(image, 1) else { return }
         
         try? data.write(to: path)
     }

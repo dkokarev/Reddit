@@ -18,9 +18,9 @@ class TopPostsViewController: UIViewController, Pageable {
     private let detailsSegue = "PostDetailsSegue"
     
     @IBOutlet private var tableView: UITableView!
+    
     private(set) var marker: String?
     private weak var task: URLSessionDataTask?
-    
     private var posts = [PostItem]()
     private var rowHeights = [IndexPath : CGFloat]()
     private lazy var imageProvider = ImageProvider()
@@ -52,12 +52,15 @@ class TopPostsViewController: UIViewController, Pageable {
         task?.cancel()
     }
     
+    // MARK: - Private Methods
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == detailsSegue, let indexPath = tableView.indexPathForSelectedRow, let post = posts[indexPath.row] as? Post {
-            if let controller = segue.destination as? PostDetailsViewController {
-                controller.post = post
-            }
-        }
+        guard  segue.identifier == detailsSegue,
+               let indexPath = tableView.indexPathForSelectedRow,
+               let post = posts[indexPath.row] as? Post,
+               let controller = segue.destination as? PostDetailsViewController else { return }
+        
+        controller.post = post
     }
     
     // MARK: - Pageable
@@ -74,13 +77,12 @@ class TopPostsViewController: UIViewController, Pageable {
             
             guard let page = page else { return }
             
-            let count = strongSelf.posts.count
-            
+            let previousCount = strongSelf.posts.count
             strongSelf.marker = page.after
             strongSelf.posts.append(contentsOf: page.posts)
             
             var indexPaths = [IndexPath]()
-            for index in count...strongSelf.posts.count - 1 {
+            for index in previousCount...strongSelf.posts.count - 1 {
                 indexPaths.append(IndexPath(row: index, section: 0))
             }
             strongSelf.tableView.insertRows(at: indexPaths, with: .none)

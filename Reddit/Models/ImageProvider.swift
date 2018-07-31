@@ -13,6 +13,8 @@ typealias ImageCompletion = (URL, UIImage?) -> ()
 
 class ImageProvider: NSObject {
     
+    static let shared = ImageProvider()
+    
     private lazy var session: URLSession = {
         var configuration = URLSessionConfiguration.default
         configuration.httpMaximumConnectionsPerHost = 5
@@ -46,6 +48,14 @@ class ImageProvider: NSObject {
         existingTask(with: url) { task in
             if let task = task {
                 task.priority = priority
+            }
+        }
+    }
+    
+    func cancelTask(withUrl url: URL) {
+        existingTask(with: url) { task in
+            if let task = task {
+                task.cancel()
             }
         }
     }

@@ -23,7 +23,6 @@ class TopPostsViewController: UIViewController, Pageable {
     private weak var task: URLSessionDataTask?
     private var posts = [PostItem]()
     private var rowHeights = [IndexPath : CGFloat]()
-    private lazy var imageProvider = ImageProvider()
     private lazy var loadingView = LoadingView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: 50.0))
     
     private(set) var loading = false {
@@ -120,7 +119,7 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
         guard let post = posts[indexPath.row] as? Post,
               let url = post.preview?.defaultImage?.defaultThumbnailSource?.url else { return }
         
-        imageProvider.image(withURL: url) { [weak self] (imageUrl, image) in
+        ImageProvider.shared.image(withURL: url) { [weak self] (imageUrl, image) in
             guard let strongSelf = self,
                   let imageCell = cell as? PostImageCell ,
                   let indexPath = strongSelf.tableView.indexPath(for: cell),
@@ -138,7 +137,7 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
               let post = posts[indexPath.row] as? Post,
               let url = post.preview?.defaultImage?.defaultThumbnailSource?.url else { return }
         
-        imageProvider.setPriority(0.2, for: url)
+        ImageProvider.shared.setPriority(0.2, for: url)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

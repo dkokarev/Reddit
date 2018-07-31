@@ -13,7 +13,6 @@ class PostDetailsViewController: UIViewController {
     
     @IBOutlet private(set) var imageView: UIImageView!
     @IBOutlet private(set) var spinner: UIActivityIndicatorView!
-    private let imageProvider = ImageProvider()
     var post: Post? {
         didSet {
             if UIApplication.shared.applicationState == .active {
@@ -37,6 +36,10 @@ class PostDetailsViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+        if let url = post?.preview?.defaultImage?.source.url {
+            ImageProvider.shared.cancelTask(withUrl: url)
+        }
+        
         post = nil
     }
     
@@ -54,7 +57,7 @@ class PostDetailsViewController: UIViewController {
         guard let url = post?.preview?.defaultImage?.source.url else { return }
         
         spinner.startAnimating()
-        imageProvider.image(withURL: url) { [weak self] (imageUrl, image) in
+        ImageProvider.shared.image(withURL: url) { [weak self] (imageUrl, image) in
             guard let strongSelf = self else { return }
             
             strongSelf.spinner.stopAnimating()

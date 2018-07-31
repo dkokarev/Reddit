@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC0B410F211080AE00DE0EAB /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0B410E211080AE00DE0EAB /* Storable.swift */; };
+		FC0B4111211081BA00DE0EAB /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0B4110211081BA00DE0EAB /* FileManagerExtension.swift */; };
 		FCA77398210BC04A007DE903 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA77397210BC04A007DE903 /* AppDelegate.swift */; };
 		FCA7739D210BC04A007DE903 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA7739B210BC04A007DE903 /* Main.storyboard */; };
 		FCA773A2210BC04C007DE903 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA773A0210BC04C007DE903 /* LaunchScreen.storyboard */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC0B410E211080AE00DE0EAB /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
+		FC0B4110211081BA00DE0EAB /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		FCA77394210BC04A007DE903 /* Reddit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reddit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA77397210BC04A007DE903 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCA7739C210BC04A007DE903 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -120,9 +124,9 @@
 				FCD68FB7210E33500079480B /* Preview.swift */,
 				FCD68FB9210E33850079480B /* Image.swift */,
 				FCD68FBB210E33A40079480B /* Source.swift */,
-				FCD68FCC210F79E40079480B /* PostStorage.swift */,
 				FCD68FBE210E4E740079480B /* ImageProvider.swift */,
 				FCD68FC0210E83590079480B /* ImageStorage.swift */,
+				FCD68FCC210F79E40079480B /* PostStorage.swift */,
 				FCA773C8210D0998007DE903 /* Network */,
 			);
 			path = Models;
@@ -185,6 +189,7 @@
 			children = (
 				FCA773DD210D2051007DE903 /* PostItem.swift */,
 				FCD68FB5210E2F1C0079480B /* Pageable.swift */,
+				FC0B410E211080AE00DE0EAB /* Storable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				FCD68FC4210E880D0079480B /* DateExtension.swift */,
 				FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */,
 				FCEE1CB0210FC9EB00B4CB98 /* TableViewExtension.swift */,
+				FC0B4110211081BA00DE0EAB /* FileManagerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 				FCA773BD210CC81F007DE903 /* TopPostsViewController.swift in Sources */,
 				FCA77398210BC04A007DE903 /* AppDelegate.swift in Sources */,
 				FCEE1CB1210FC9EB00B4CB98 /* TableViewExtension.swift in Sources */,
+				FC0B4111211081BA00DE0EAB /* FileManagerExtension.swift in Sources */,
 				FCA773D6210D19BB007DE903 /* Page.swift in Sources */,
 				FCD68FC7210E997C0079480B /* PostDetailsViewController.swift in Sources */,
 				FCA773D2210D0A7C007DE903 /* HTTPMethod.swift in Sources */,
@@ -289,6 +296,7 @@
 				FCD68FBA210E33850079480B /* Image.swift in Sources */,
 				FCA773D0210D0998007DE903 /* ParameterEncoding.swift in Sources */,
 				FCA773E1210D2068007DE903 /* Constants.swift in Sources */,
+				FC0B410F211080AE00DE0EAB /* Storable.swift in Sources */,
 				FCD68FBC210E33A40079480B /* Source.swift in Sources */,
 				FCD68FCB210F28920079480B /* LoadingView.swift in Sources */,
 				FCD68FC5210E880D0079480B /* DateExtension.swift in Sources */,

@@ -9,27 +9,36 @@
 import Foundation
 import UIKit
 
-struct ImageStorage {
+struct ImageStorage: Storable {
     
-    // MARK: Public Methods
+    typealias Item = UIImage
     
-    func image(withFilename filename: String) -> UIImage? {
-        guard let path = path(withFilename: filename) else { return nil }
+    func save(_ item: Item, withFilename filename: String) {
+        guard let path = path(forFilename: filename) else { return }
+        
+        removeItem(withFilename: filename)
+        
+        if let data = UIImageJPEGRepresentation(item, 1) {
+            try? data.write(to: path)
+        }
+    }
+    
+    func getItem(withFilename filename: String) -> Item? {
+        guard let path = path(forFilename: filename) else { return nil }
         
         return UIImage(contentsOfFile: path.path)
     }
     
-    func saveImage(_ image: UIImage, withFilename filename: String) {
-        guard let path = path(withFilename: filename),
-              let data = UIImageJPEGRepresentation(image, 1) else { return }
+    func removeItem(withFilename filename: String) {
+        guard let url = path(forFilename: filename) else { return }
         
-        try? data.write(to: path)
+        if FileManager.default.fileExists(atPath: url.path) {
+            try? FileManager.default.removeItem(at: url)
+        }
     }
     
-    func path(withFilename filename: String) -> URL? {
-        guard let directory = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
-        
-        return directory.appendingPathComponent(filename)
+    func path(forFilename filename: String) -> URL? {
+        return FileManager.default.url(forFilename: filename, directory: .cachesDirectory)
     }
     
 }

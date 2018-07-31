@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func restoreState() {
         guard let navController = self.window?.rootViewController as? UINavigationController,
-              let selectedPost = PostStorage().selectedPost,
+              let selectedPost = PostStorage().getItem(withFilename: Config.selectedPostKey),
               let postController = navController.storyboard?.instantiateViewController(withIdentifier: "PostDetailsViewController") as? PostDetailsViewController
             else { return }
         

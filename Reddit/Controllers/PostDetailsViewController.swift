@@ -17,8 +17,11 @@ class PostDetailsViewController: UIViewController {
     var post: Post? {
         didSet {
             if UIApplication.shared.applicationState == .active {
-                var storage = PostStorage()
-                storage.selectedPost = post
+                if post != nil {
+                    PostStorage().save(post!, withFilename: Config.selectedPostKey)
+                } else {
+                    PostStorage().removeItem(withFilename: Config.selectedPostKey)
+                }
             }
         }
     }

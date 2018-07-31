@@ -24,9 +24,8 @@ class ImageProvider: NSObject {
     func image(withURL url: URL, completion: @escaping ImageCompletion) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             let storage = ImageStorage()
-            let filename = String.filename(from: url)
             
-            if let image = storage.image(withFilename: filename) {
+            if let image = storage.getItem(withFilename: String.filename(from: url)) {
                 DispatchQueue.main.async { completion(url, image) }
                 return
             }
@@ -57,7 +56,7 @@ class ImageProvider: NSObject {
         let storage = ImageStorage()
         let filename = String.filename(from: url)
         
-        guard let path = storage.path(withFilename: filename) else {
+        guard let path = FileManager.default.url(forFilename: filename, directory: .cachesDirectory) else {
             DispatchQueue.main.async { completion(url, nil) }
             return
         }
@@ -71,7 +70,7 @@ class ImageProvider: NSObject {
             var image: UIImage? = nil
             
             if (try? FileManager.default.moveItem(at: localUrl, to: path)) != nil {
-                image = storage.image(withFilename: filename)
+                image = storage.getItem(withFilename: filename)
             }
             
             DispatchQueue.main.async { completion(url, image) }

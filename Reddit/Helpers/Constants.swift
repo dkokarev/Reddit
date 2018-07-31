@@ -9,5 +9,8 @@
 import Foundation
 
 enum Config {
+    
     static let baseURL = URL(string: "https://www.reddit.com")!
+    static let selectedPostKey = "selectedPostKey"
+    
 }

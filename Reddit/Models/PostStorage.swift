@@ -8,35 +8,37 @@
 
 import Foundation
 
-struct PostStorage {
+struct PostStorage: Storable {
     
-    private let selectedPostFilename = "selectedPost"
+    typealias Item = Post
     
-    var selectedPost: Post? {
-        get {
-            guard let url = path(withFilename: selectedPostFilename),
-                let data = FileManager.default.contents(atPath: url.path) else { return nil }
-            
-            return try? JSONDecoder().decode(Post.self, from: data)
-        }
-        set {
-            guard let url = path(withFilename: selectedPostFilename) else { return }
-            
-            if FileManager.default.fileExists(atPath: url.path) {
-                try? FileManager.default.removeItem(at: url)
-            }
-            
-            if let data = try? JSONEncoder().encode(newValue) {
-                FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
-            }
+    func save(_ item: Item, withFilename filename: String) {
+        guard let url = path(forFilename: filename) else { return }
+        
+        removeItem(withFilename: filename)
+        
+        if let data = try? JSONEncoder().encode(item) {
+            FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
         }
     }
     
-    // MARK: Public Methods
+    func getItem(withFilename filename: String) -> Item? {
+        guard let url = path(forFilename: filename),
+            let data = FileManager.default.contents(atPath: url.path) else { return nil }
+        
+        return try? JSONDecoder().decode(Post.self, from: data)
+    }
     
-    func path(withFilename name: String) -> URL? {
-        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
-        return directory.appendingPathComponent(name, isDirectory: false)
+    func removeItem(withFilename filename: String) {
+        guard let url = path(forFilename: filename) else { return }
+        
+        if FileManager.default.fileExists(atPath: url.path) {
+            try? FileManager.default.removeItem(at: url)
+        }
+    }
+    
+    func path(forFilename filename: String) -> URL? {
+        return FileManager.default.url(forFilename: filename)
     }
     
 }

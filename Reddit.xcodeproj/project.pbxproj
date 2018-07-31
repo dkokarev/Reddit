@@ -30,7 +30,6 @@
 		FCD68FBC210E33A40079480B /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FBB210E33A40079480B /* Source.swift */; };
 		FCD68FBF210E4E740079480B /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FBE210E4E740079480B /* ImageProvider.swift */; };
 		FCD68FC1210E83590079480B /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC0210E83590079480B /* ImageStorage.swift */; };
-		FCD68FC3210E838B0079480B /* ImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC2210E838B0079480B /* ImageOperation.swift */; };
 		FCD68FC5210E880D0079480B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC4210E880D0079480B /* DateExtension.swift */; };
 		FCD68FC7210E997C0079480B /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC6210E997C0079480B /* PostDetailsViewController.swift */; };
 		FCD68FC9210F1CC00079480B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */; };
@@ -65,7 +64,6 @@
 		FCD68FBB210E33A40079480B /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		FCD68FBE210E4E740079480B /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		FCD68FC0210E83590079480B /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
-		FCD68FC2210E838B0079480B /* ImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperation.swift; sourceTree = "<group>"; };
 		FCD68FC4210E880D0079480B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		FCD68FC6210E997C0079480B /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				FCD68FCC210F79E40079480B /* PostStorage.swift */,
 				FCD68FBE210E4E740079480B /* ImageProvider.swift */,
 				FCD68FC0210E83590079480B /* ImageStorage.swift */,
-				FCD68FC2210E838B0079480B /* ImageOperation.swift */,
 				FCA773C8210D0998007DE903 /* Network */,
 			);
 			path = Models;
@@ -177,10 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA773E0210D2068007DE903 /* Constants.swift */,
-				FCD68FB1210DFB920079480B /* StringExtension.swift */,
-				FCD68FC4210E880D0079480B /* DateExtension.swift */,
-				FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */,
-				FCEE1CB0210FC9EB00B4CB98 /* TableViewExtension.swift */,
+				FCEE1CB2210FDE5800B4CB98 /* Extensions */,
 				FCA773DB210D2051007DE903 /* Protocols */,
 			);
 			path = Helpers;
@@ -193,6 +187,17 @@
 				FCD68FB5210E2F1C0079480B /* Pageable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FCEE1CB2210FDE5800B4CB98 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCD68FB1210DFB920079480B /* StringExtension.swift */,
+				FCD68FC4210E880D0079480B /* DateExtension.swift */,
+				FCD68FC8210F1CC00079480B /* ViewControllerExtension.swift */,
+				FCEE1CB0210FC9EB00B4CB98 /* TableViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +272,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA773DF210D2051007DE903 /* PostItem.swift in Sources */,
-				FCD68FC3210E838B0079480B /* ImageOperation.swift in Sources */,
 				FCA773DE210D2051007DE903 /* TargetType.swift in Sources */,
 				FCA773CF210D0998007DE903 /* Router.swift in Sources */,
 				FCD68FC1210E83590079480B /* ImageStorage.swift in Sources */,

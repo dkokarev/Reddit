@@ -138,7 +138,7 @@ extension TopPostsViewController: UITableViewDataSource, UITableViewDelegate {
               let post = posts[indexPath.row] as? Post,
               let url = post.preview?.defaultImage?.defaultThumbnailSource?.url else { return }
         
-        imageProvider.setPriority(.low, for: url)
+        imageProvider.setPriority(0.2, for: url)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

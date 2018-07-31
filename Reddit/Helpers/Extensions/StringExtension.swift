@@ -62,4 +62,14 @@ extension String {
         result.append(contentsOf: self[position...])
         return result
     }
+    
+    static func filename(from url: URL) -> String {
+        let path = url.lastPathComponent
+        
+        if let query = url.query {
+            return String(query.hashValue) + path
+        } else {
+            return path
+        }
+    }
 }

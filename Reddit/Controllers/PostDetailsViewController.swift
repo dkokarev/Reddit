@@ -17,7 +17,8 @@ class PostDetailsViewController: UIViewController {
     var post: Post? {
         didSet {
             if UIApplication.shared.applicationState == .active {
-                PostStorage().save(post: post)
+                var storage = PostStorage()
+                storage.selectedPost = post
             }
         }
     }

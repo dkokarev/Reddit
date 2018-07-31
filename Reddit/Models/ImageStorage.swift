@@ -13,23 +13,23 @@ struct ImageStorage {
     
     // MARK: Public Methods
     
-    func image(withURL url: URL) -> UIImage? {
-        guard let path = path(withURL: url) else { return nil }
+    func image(withFilename filename: String) -> UIImage? {
+        guard let path = path(withFilename: filename) else { return nil }
         
         return UIImage(contentsOfFile: path.path)
     }
     
-    func saveImage(_ image: UIImage, withURL url: URL) {
-        guard let path = path(withURL: url),
+    func saveImage(_ image: UIImage, withFilename filename: String) {
+        guard let path = path(withFilename: filename),
               let data = UIImageJPEGRepresentation(image, 1) else { return }
         
         try? data.write(to: path)
     }
     
-    func path(withURL url: URL) -> URL? {
+    func path(withFilename filename: String) -> URL? {
         guard let directory = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { return nil }
         
-        return directory.appendingPathComponent(String(url.hashValue))
+        return directory.appendingPathComponent(filename)
     }
     
 }

@@ -14,19 +14,19 @@ struct ImageStorage: Storable {
     typealias Item = UIImage
     
     func save(_ item: Item, withFilename filename: String) {
-        guard let path = path(forFilename: filename) else { return }
+        guard let url = path(forFilename: filename) else { return }
         
         removeItem(withFilename: filename)
         
         if let data = UIImageJPEGRepresentation(item, 1) {
-            try? data.write(to: path)
+            try? data.write(to: url)
         }
     }
     
     func getItem(withFilename filename: String) -> Item? {
-        guard let path = path(forFilename: filename) else { return nil }
+        guard let url = path(forFilename: filename) else { return nil }
         
-        return UIImage(contentsOfFile: path.path)
+        return UIImage(contentsOfFile: url.path)
     }
     
     func removeItem(withFilename filename: String) {

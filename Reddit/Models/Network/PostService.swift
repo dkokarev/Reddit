@@ -14,7 +14,11 @@ struct PostService {
     
     static func topPosts(limit: UInt = 10, after: String?, completion: @escaping PostCompletion) -> URLSessionDataTask? {
         let target = PostTarget.top(limit: limit, after: after)
-        guard let request = Router().request(for: target) else { return nil }
+        
+        guard let request = Router().request(for: target) else {
+            completion(nil, nil)
+            return nil
+        }
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if error != nil || data == nil {

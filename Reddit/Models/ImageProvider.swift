@@ -15,6 +15,8 @@ class ImageProvider: NSObject {
     
     static let shared = ImageProvider()
     
+    private let queue = DispatchQueue(label: "com.reddit.image")
+    
     private lazy var session: URLSession = {
         var configuration = URLSessionConfiguration.default
         configuration.httpMaximumConnectionsPerHost = 5
@@ -24,10 +26,8 @@ class ImageProvider: NSObject {
     // MARK: - Public Methods
     
     func image(withURL url: URL, completion: @escaping ImageCompletion) {
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let storage = ImageStorage()
-            
-            if let image = storage.getItem(withFilename: String.filename(from: url)) {
+        queue.async { [weak self] in
+            if let image = ImageStorage().getItem(withFilename: String.filename(from: url)) {
                 DispatchQueue.main.async { completion(url, image) }
                 return
             }
@@ -63,7 +63,6 @@ class ImageProvider: NSObject {
     // MARK: - Private Methods
     
     private func downloadImage(withUrl url: URL, completion: @escaping ImageCompletion) {
-        let storage = ImageStorage()
         let filename = String.filename(from: url)
         
         guard let path = FileManager.default.url(forFilename: filename, directory: .cachesDirectory) else {
@@ -71,16 +70,19 @@ class ImageProvider: NSObject {
             return
         }
         
-        let task = session.downloadTask(with: url, completionHandler: { localUrl, _, _ in
-            guard let localUrl = localUrl else {
-                DispatchQueue.main.async { completion(url, nil) }
-                return
+        let task = session.downloadTask(with: url, completionHandler: { [weak self] localUrl, _, _ in
+            guard let localUrl = localUrl,
+                  let strongSelf = self else {
+                    DispatchQueue.main.async { completion(url, nil) }
+                    return
             }
             
             var image: UIImage? = nil
             
-            if (try? FileManager.default.moveItem(at: localUrl, to: path)) != nil {
-                image = storage.getItem(withFilename: filename)
+            strongSelf.queue.sync {
+                if (try? FileManager.default.moveItem(at: localUrl, to: path)) != nil {
+                    image = ImageStorage().getItem(withFilename: filename)
+                }
             }
             
             DispatchQueue.main.async { completion(url, image) }
